@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next part Watch Video</title>
+    <style>
+        :root {
+            --primary: #ff4757;
+            --secondary: #ff6b81;
+            --accent: #2ed573;
+            --dark: #1e272e;
+            --light: #f1f2f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: 
+                linear-gradient(rgba(30, 39, 46, 0.9), 
+                rgba(30, 39, 46, 0.9)),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 10s ease infinite;
+            background-size: 300% 300%;
+            line-height: 1.2;
+        }
+        
+        .caption {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            min-width: auto;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+            padding: 15px 40px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 71, 87, 0.4);
+        }
+        
+        .btn-confirmed {
+            background: linear-gradient(45deg, var(--accent), #7bed9f);
+            box-shadow: 0 10px 20px rgba(46, 213, 115, 0.3);
+        }
+        
+        .btn-logo {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            gap: 10px;
+        }
+        
+        .btn-logo:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .btn-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .ad-section {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 5px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 0 auto 5px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px;
+            border-radius: 10px;
+            min-height: 250px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .native-ad-container {
+            width: 100%;
+            max-width: 728px;
+            margin: 0 auto 30px;
+            padding: 5px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .caption {
+                font-size: 1.1rem;
+            }
+            
+            .btn-primary {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .btn-logo {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .btn-logo img {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .btn-group {
+                gap: 15px;
+            }
+            
+            .ad-container, .native-ad-container {
+                max-width: 100%;
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-group {
+                gap: 10px;
+            }
+            
+            .btn-logo {
+                padding: 8px 15px;
+            }
+            
+            .btn-logo span {
+                display: none;
+            }
+            
+            .btn-logo img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1>পরের অংশ দেখুন </h1>
+                <p class="caption">পরের অংশ দেখতে নিচের Next Part বাটনে ক্লিক করুন - Enjoy 🥰</p>
+                
+                <div class="btn-group">
+                    <button id="mainActionBtn" class="btn btn-primary">Next part Watch >>></button>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="https://t.me/eHubTechbd" class="btn btn-logo" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Teligran">
+                        <span>Community</span>
+                    </a>
+                    <a href="https://youtube.com/@ehubtech?si=6K8hiNkrPKr8PIUv" class="btn btn-logo" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                        <span>YouTube</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ad-section">
+            <!-- Native Banner Ad -->
+            <div class="native-ad-container">
+                <script async="async" data-cfasync="false" src="//pl22744746.profitableratecpm.com/34b05d9002cf9799062d4611bfc4fa3e/invoke.js"></script>
+                <div id="container-34b05d9002cf9799062d4611bfc4fa3e"></div>
+            </div>
+            
+            <!-- Banner Ad -->
+            <div class="ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'a0129fb6ecaf698298ded6017aeb9d28',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/a0129fb6ecaf698298ded6017aeb9d28/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Monetag SDK (Optimized Loading) -->
+    <script>
+        // Load Monetag SDK asynchronously
+        function loadMonetag() {
+            var script = document.createElement('script');
+            script.src = '//libtl.com/sdk.js';
+            script.setAttribute('data-zone', '9549781');
+            script.setAttribute('data-sdk', 'show_9549781');
+            document.body.appendChild(script);
+            
+            // Initialize immediately after load
+            script.onload = function() {
+                show_9549781({
+                    type: 'inApp',
+                    inAppSettings: {
+                        frequency: 2,
+                        capping: 0.1,
+                        interval: 30,
+                        timeout: 3,  // Reduced from 5 to 3 seconds for faster display
+                        everyPage: false
+                    }
+                });
+            };
+        }
+        
+        // Load after slight delay to prioritize content
+        setTimeout(loadMonetag, 500);
+    </script>
+    
+    <!-- Social Bar Ads -->
+    <script type='text/javascript' src='//pl22735159.profitableratecpm.com/b1/b7/e0/b1b7e0739a5637650220078ecfb371ec.js'></script>
+    
+    <!-- PopUnder Ad -->
+    <script type='text/javascript' src='//pl22736170.profitableratecpm.com/ea/06/47/ea06479d9068aa918a578f133ab7cf25.js'></script>
+    
+    <script>
+        // Main button functionality
+        const mainActionBtn = document.getElementById('mainActionBtn');
+        let clicked = false;
+        
+        mainActionBtn.addEventListener('click', function() {
+            if (!clicked) {
+                // First click - redirect to intermediate page
+                window.open('https://otieu.com/4/9657125', '_blank');
+                this.textContent = 'Continue to Video';
+                this.classList.add('btn-confirmed');
+                clicked = true;
+            } else {
+                // Second click - redirect to final destination
+                window.location.href = 'https://t.me/eHubTechbd';
+            }
+        });
+        
+        // Preload important elements
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.header, .ad-section');
+            elements.forEach(el => el.style.opacity = 1);
+        });
+    </script>
+</body>
+  </html>
